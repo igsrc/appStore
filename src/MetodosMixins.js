@@ -1,3 +1,4 @@
+import  { mapMutations } from 'vuex';
 export default{
     data(){
         return{
@@ -6,7 +7,22 @@ export default{
             statusBtn: '',
         }
     },
+    computed:{
+        setCorBtn(produtoStatus){
+            if((produtoStatus.status == 'Desativado') && (produtoStatus.contratado == false)){
+                this.statusBtn = 'Contratar';
+                return this.corBtn = 'success';
+            }else if((produtoStatus.status == 'Desativado') && (produtoStatus.contratado == true)){
+                this.statusBtn = 'Ativar';
+                return this.corBtn = 'warning';
+            }else{
+                this.statusBtn = 'Desinstalar';
+                return this.corBtn = 'danger';   
+            }
+        }
+    },
     methods: {
+        ...mapMutations(['setAlteracoesProduto']),
         setCorEtiqueta(produtoEtiqueta){
             switch (produtoEtiqueta) {
                 case 'Performance':
@@ -24,20 +40,11 @@ export default{
             }
             return this.corEtiqueta;
         },
-        setCorBtn(produtoStatus){
-            if((produtoStatus.status == 'Desativado') && (produtoStatus.contrato == false)){
-                this.statusBtn = 'Contratar';
-                return this.corBtn = 'success';
-            }else if((produtoStatus.status == 'Desativado') && (produtoStatus.contrato == true)){
-                this.statusBtn = 'Ativar';
-                return this.corBtn = 'warning';
-            }else{
-                this.statusBtn = 'Desinstalar';
-                return this.corBtn = 'danger';   
-            }
-        },
         getProdutoImagen(produtoId){
             return require('@/assets/'+produtoId +'.png');
-        }        
-    }
+        },
+        acaoBtn(produto){
+            this.$store.commit('setAlteracoesProduto', produto);
+        },
+    },      
 }
