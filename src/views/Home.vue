@@ -1,14 +1,15 @@
 <template>
   <div class="home">
-    <b-button variant="success">Click</b-button>
+    <Produtos/>
   </div>
 </template>
 
 <script>
-
+import Produtos from '@/components/Produtos.vue';
 export default {
   name: 'home',
   components: {
+    Produtos
   }
 }
 </script>
