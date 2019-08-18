@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    
+    <b-button variant="success">Click</b-button>
   </div>
 </template>
 
