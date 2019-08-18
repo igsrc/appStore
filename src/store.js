@@ -19,7 +19,7 @@ export default new Vuex.Store({
         etiqueta: 'Engajamento',
         nome: 'Badges & Cards',
         descricao: 'Gratuito',
-        status: 'Desativo',
+        status: 'Desativado',
         contrato: true
       },
       {
@@ -132,6 +132,6 @@ export default new Vuex.Store({
 
   },
   actions: {
-    
+
   }
 })
